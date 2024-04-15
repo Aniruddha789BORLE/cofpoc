@@ -1,0 +1,39 @@
+#%RAML 1.0
+title: My API
+version: v1
+baseUri: https://api.example.com/{version}
+
+/users:
+  displayName: Users
+  get:
+    description: Retrieve a list of users
+    responses:
+      200:
+        description: Successful response
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "id": 1,
+                  "name": "John Doe",
+                  "email": "john@example.com"
+                },
+                {
+                  "id": 2,
+                  "name": "Jane Smith",
+                  "email": "jane@example.com"
+                }
+              ]
+  post:
+    description: Create a new user
+    body:
+      application/json:
+        example: |
+          {
+            "name": "New User",
+            "email": "newuser@example.com"
+          }
+    responses:
+      201:
+        description: User created successfully
