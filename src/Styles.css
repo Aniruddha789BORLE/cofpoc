@@ -1,0 +1,29 @@
+/* YamlConverter.css */
+
+.convert-button, .file-input{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.convert-button:hover, .file-input:hover {
+  background-color: #0056b3;
+}
+
+.container {
+  border: 2px solid #dc1e1e; /* Example border */
+  padding: 10px; /* Example padding */
+}
+
+/* Define styles for the input file div */
+.input-div {
+  margin-bottom: 10px; /* Example margin */
+}
+
+/* Define styles for the button div */
+.button-div {
+  margin-bottom: 10px; /* Example margin */
+}

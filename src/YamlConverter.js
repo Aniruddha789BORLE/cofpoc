@@ -1,6 +1,8 @@
 import React from 'react';
 import jsYaml from 'js-yaml';
 import * as XLSX from 'xlsx';
+import Header from './Header';
+import './Styles.css';
 
 class YamlConverter extends React.Component {
   constructor(props) {
@@ -9,6 +11,16 @@ class YamlConverter extends React.Component {
       yamlData: '',
       excelData: null
     };
+  }
+
+  componentDidMount() {
+    // Dynamically add Bootstrap CSS link to the document head
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css';
+    link.integrity = 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh';
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
   }
 
   handleFileChange = event => {
@@ -58,14 +70,21 @@ class YamlConverter extends React.Component {
 
     return (
       <div>
-        <input type="file" onChange={this.handleFileChange} />
-        <button onClick={this.convertToExcel}>Convert to Excel</button>
+        <Header /> {/* Include the Header component */}
+        <div className="container">
+        <div className="mb-3">
+          <input className="form-control-file mb-3" type="file" onChange={this.handleFileChange} />
+        </div>
+        <div className="mb-3">
+          <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
+        </div>
         {excelData && (
-          <div>
+          <div className="mb-3">
             <h3>Download Excel</h3>
-            <a href={excelData} download="data.xlsx">Download Excel</a>
+            <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
           </div>
         )}
+      </div>
       </div>
     );
   }
