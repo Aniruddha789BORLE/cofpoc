@@ -11,7 +11,6 @@ class YamlConverter extends React.Component {
     };
   }
 
- z
   handleFileChange = event => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -35,32 +34,24 @@ class YamlConverter extends React.Component {
     try {
       const jsonData = jsYaml.load(yamlData);
 
-      
-      const flattenedData = [];
-      const flattenObject = (obj, prefix = '') => {
-        for (let key in obj) {
-          if (typeof obj[key] === 'object' && obj[key] !== null) {
-            flattenObject(obj[key], prefix + key + '_');
-          } else {
-            flattenedData.push({ [prefix + key]: obj[key] });
-          }
-        }
-      };
-      flattenObject(jsonData);
+      const flattenedData = flattenObject(jsonData);
 
-      // Convert data to Excel
-      const worksheet = XLSX.utils.json_to_sheet(flattenedData); 
+      // Construct an array of rows
+      const dataRows = [flattenedData];
+
+      const sheet = XLSX.utils.json_to_sheet(dataRows); // No need to skip the header row
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+      XLSX.utils.book_append_sheet(workbook, sheet, 'Sheet1');
 
       const excelBuffer = XLSX.write(workbook, { type: 'array', bookType: 'xlsx' });
       const excelBlob = new Blob([excelBuffer], { type: 'application/octet-stream' });
       const excelUrl = URL.createObjectURL(excelBlob);
+
       this.setState({ excelData: excelUrl });
     } catch (error) {
       alert('Error occurred while converting YAML to Excel: ' + error.message);
     }
-};
+  };
 
   render() {
     const { excelData } = this.state;
@@ -75,24 +66,35 @@ class YamlConverter extends React.Component {
             <a href={excelData} download="data.xlsx">Download Excel</a>
           </div>
         )}
-        <header>
-                    <h1>This is the Header</h1>
-                    <nav>
-                        <ul>
-                            <li><a href="">Home</a></li>
-                            <li><a href="">About</a></li>
-                            <li><a href="">Contact</a></li>
-                        </ul>
-                    </nav>
-                </header>
-                <main>
-                    <h2>Main Content</h2>
-                    <p>This is the main content of the page.</p>
-                </main>
       </div>
-      
     );
   }
 }
 
 export default YamlConverter;
+
+// Function to flatten nested YAML object
+function flattenObject(obj, prefix = '') {
+  let flattenedData = {};
+  for (let key in obj) {
+    if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
+      // Recursively flatten nested objects
+      flattenedData = { ...flattenedData, ...flattenObject(obj[key], prefix + key + '_') };
+    } else if (Array.isArray(obj[key])) {
+      // Flatten arrays
+      obj[key].forEach((item, index) => {
+        for (let itemKey in item) {
+          flattenedData[prefix + key + '_' + index + '_' + itemKey] = item[itemKey];
+        }
+      });
+    } else {
+      // Convert date string to Date object
+      if (key === 'date' && obj[key]) {
+        flattenedData[prefix + key] = new Date(obj[key]);
+      } else {
+        flattenedData[prefix + key] = obj[key];
+      }
+    }
+  }
+  return flattenedData;
+}
