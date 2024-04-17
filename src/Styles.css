@@ -3,7 +3,7 @@
 .convert-button, .file-input{
   background-color: #007bff;
   color: #fff;
-  border: none;
+  border: 2px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -14,7 +14,6 @@
 }
 
 .container {
-  border: 2px solid #dc1e1e; /* Example border */
   padding: 10px; /* Example padding */
 }
 

@@ -71,13 +71,14 @@ class YamlConverter extends React.Component {
     return (
       <div>
         <Header /> {/* Include the Header component */}
-        <div className="container">
+        <div className="container d-flex justify-content-center">
         <div className="mb-3">
           <input className="form-control-file mb-3" type="file" onChange={this.handleFileChange} />
+          
         </div>
         <div className="mb-3">
           <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
-        </div>
+        </div>  
         {excelData && (
           <div className="mb-3">
             <h3>Download Excel</h3>
