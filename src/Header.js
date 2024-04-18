@@ -9,13 +9,8 @@ const Header = () => {
       <span className="navbar-brand mb-0 h1" style={{ fontSize: '30px' }}>API Automation Accelerator</span>
       </div>
     </header>
-    // <footer>
-    //     <div>
-            
-    //     </div>
-    // </footer>
-    
   );
 };
+    
 
-export default Header;
+ export default Header;

@@ -1,7 +1,9 @@
 import React from 'react';
 import jsYaml from 'js-yaml';
 import * as XLSX from 'xlsx';
-import Header from './Header';
+import  Header from './Header';
+import SideNav from './SideNav';
+ import Footer from './Footer';
 import './Styles.css';
 
 class YamlConverter extends React.Component {
@@ -70,23 +72,28 @@ class YamlConverter extends React.Component {
 
     return (
       <div>
-        <Header /> {/* Include the Header component */}
-        <div className="container d-flex justify-content-center">
-        <div className="mb-3">
-          <input className="form-control-file mb-3" type="file" onChange={this.handleFileChange} />
-          
-        </div>
-        <div className="mb-3">
-          <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
-        </div>  
-        {excelData && (
-          <div className="mb-3">
-            <h3>Download Excel</h3>
-            <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
+        <Header />
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <SideNav />
+          <div className="main">
+            <div className="container">
+              <div className="mb-3">
+                <input className="form-control-file mb-3" type="file" onChange={this.handleFileChange} />
+              </div>
+              <div className="mb-3">
+                <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
+              </div>
+              {excelData && (
+                <div className="mb-3">
+                  <h3>Download Excel</h3>
+                  <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
+                </div>
+              )}
+            </div>
           </div>
-        )}
-      </div>
-      </div>
+        </div>
+        <Footer />
+      </div>    
     );
   }
 }

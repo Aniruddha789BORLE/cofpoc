@@ -12,7 +12,9 @@
 .convert-button:hover, .file-input:hover {
   background-color: #0056b3;
 }
-
+.main{
+  margin-left: 50%;
+}
 .container {
   padding: 10px; /* Example padding */
 }
