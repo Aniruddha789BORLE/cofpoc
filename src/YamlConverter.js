@@ -72,28 +72,37 @@ class YamlConverter extends React.Component {
 
     return (
       <div>
-        <Header />
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <SideNav />
-          <div className="main">
-            <div className="container">
-              <div className="mb-3">
-                <input className="form-control-file mb-3" type="file" onChange={this.handleFileChange} />
-              </div>
-              <div className="mb-3">
-                <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
-              </div>
-              {excelData && (
-                <div className="mb-3">
-                  <h3>Download Excel</h3>
-                  <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
-                </div>
-              )}
-            </div>
-          </div>
+  <Header />
+  <div style={{ display: 'flex' }}>
+    <SideNav />
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="pageheading" style={{ textAlign: 'center', marginBottom: '20px' }}>
+  <div className="mb-3">
+    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <h2 style={{ whiteSpace: 'nowrap', margin: 0 }}>this is a long textfmdslfmdslgmnl;nsahl;fnl;danh;ldndaldsfd,bv,x bfsBMFSLbmslbmflmnb;lnfsLBNf;lsMHB:LSFMfhmnaflndlh;nfd;alhnadflhn;fldanhl;admnhl;afdsnhfs;dklhnadfkl;hnfdah;lknadh;lnfdah;ladfnhl;adfnl;adn;dln afdl;nm</h2>
+    </div>
+  </div>
+</div>
+
+      <div className="container">
+        <div className="mb-3">
+          <input className="form-control-file mb-3" type="file" onChange={this.handleFileChange} />
         </div>
-        <Footer />
-      </div>    
+        <div className="mb-3">
+          <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
+        </div>
+        {excelData && (
+          <div className="mb-3">
+            <h3>Download Excel</h3>
+            <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+  <Footer />
+</div>
+
     );
   }
 }

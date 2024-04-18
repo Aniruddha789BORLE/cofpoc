@@ -14,10 +14,22 @@
 }
 .main{
   margin-left: 50%;
+  border: 2px solid yellow;
+  display: inline-block; /* or display: block; */
+  vertical-align: top; /* Aligns the divs at the top */
+    margin-bottom: 20px; /* Adds some space between the divs */
 }
 .container {
   padding: 10px; /* Example padding */
+  border: 2px solid red;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  gap: 20px;
+}
+
 
 /* Define styles for the input file div */
 .input-div {
