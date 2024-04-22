@@ -24,6 +24,10 @@
   border: 2px solid red;
 }
 
+.mainbody{
+  border: 2px solid yellow;
+  text-align: center;
+}
 .grid-container {
   display: grid;
   grid-template-columns: auto 1fr; 
@@ -39,4 +43,19 @@
 /* Define styles for the button div */
 .button-div {
   margin-bottom: 10px; /* Example margin */
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #e0e0e0;
 }

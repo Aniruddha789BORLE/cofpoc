@@ -73,37 +73,48 @@ class YamlConverter extends React.Component {
     return (
       <div>
   <Header />
+  
   <div style={{ display: 'flex' }}>
-    <SideNav />
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <div className="pageheading" style={{ textAlign: 'center', marginBottom: '20px' }}>
-  <div className="mb-3">
-    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <h2 style={{ whiteSpace: 'nowrap', margin: 0 }}>this is a long textfmdslfmdslgmnl;nsahl;fnl;danh;ldndaldsfd,bv,x bfsBMFSLbmslbmflmnb;lnfsLBNf;lsMHB:LSFMfhmnaflndlh;nfd;alhnadflhn;fldanhl;admnhl;afdsnhfs;dklhnadfkl;hnfdah;lknadh;lnfdah;ladfnhl;adfnl;adn;dln afdl;nm</h2>
-    </div>
-  </div>
-</div>
-
-      <div className="container">
-        <div className="mb-3">
-          <input className="form-control-file mb-3" type="file" onChange={this.handleFileChange} />
-        </div>
-        <div className="mb-3">
-          <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
-        </div>
-        {excelData && (
-          <div className="mb-3">
-            <h3>Download Excel</h3>
-            <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
-          </div>
-        )}
+      <SideNav />
+      <div className="mainbody" style={{ flex: '1' }}>
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="container">
+      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <h2 class="text-secondary" style={{ margin: '1cm'}}>
+        <span class="glyphicon glyphicon-asterisk"></span>
+          <p style={{ 'font-size': '20px', border: '2px solid green'}}>Select a YAML or RAML file extension to convert it to Excel format</p>
+          </h2>
       </div>
     </div>
+
+    <div className="container" style={{ maxWidth: '1000px'}}>
+      <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
+        <label htmlFor="fileInput" className="custom-file-upload">
+          <i className="fas fa-upload"></i> Upload File
+        
+        <input type="file" onChange={this.handleFileChange} />
+        </label>
+      </div>
+      <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
+        <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
+      </div>
+      {excelData && (
+        <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
+          <h3>Download Excel</h3>
+          <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
+        </div>
+      )}
+    </div>
   </div>
-  <Footer />
 </div>
 
-    );
+
+    </div>
+    <Footer />
+  </div>
+);
+
+  
   }
 }
 
