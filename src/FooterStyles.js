@@ -2,9 +2,10 @@
 
 import styled from "styled-components";
 
+
 export const Box = styled.div`
 	padding: 5% 2%;
-	background: #E9E8E8;
+	background: #F7F7F7;
 	// position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -16,6 +17,7 @@ export const Box = styled.div`
 
 export const FooterContainer = styled.div`
 	display: flex;
+    
 	flex-direction: column;
 	justify-content: center;
 	max-width: 1000px;
@@ -64,3 +66,11 @@ export const Heading = styled.p`
 	margin-bottom: 40px;
 	font-weight: bold;
 `;
+export const Copyright = styled.div`
+	color: #686868;
+	font-size: 10px;	
+	margin-bottom: 40px;
+	font-weight: bold;
+	text-align: center;
+`;
+

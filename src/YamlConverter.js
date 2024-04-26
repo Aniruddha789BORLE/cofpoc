@@ -82,17 +82,17 @@ class YamlConverter extends React.Component {
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         <h2 class="text-secondary" style={{ margin: '1cm'}}>
         <span class="glyphicon glyphicon-asterisk"></span>
-          <p style={{ 'font-size': '20px', border: '2px solid green'}}>Select a YAML or RAML file extension to convert it to Excel format</p>
+          <p style={{ 'font-size': '20px' }}>Select a YAML or RAML file extension to convert it to Excel format</p>
           </h2>
       </div>
     </div>
 
     <div className="container" style={{ maxWidth: '1000px'}}>
-      <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
+      <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content',marginRight:'230px' }}>
         <label htmlFor="fileInput" className="custom-file-upload">
-          <i className="fas fa-upload"></i> Upload File
+          {/* <i className="fas fa-upload"></i> Upload File */}
         
-        <input type="file" onChange={this.handleFileChange} />
+          <input type="file" onChange={this.handleFileChange} />
         </label>
       </div>
       <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
@@ -100,7 +100,7 @@ class YamlConverter extends React.Component {
       </div>
       {excelData && (
         <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
-          <h3>Download Excel</h3>
+          {/* <h3>Download Excel</h3> */}
           <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
         </div>
       )}

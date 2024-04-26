@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -14,8 +15,10 @@ const SideBar = () => {
         <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Contrast</CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
-            <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="sticky-note">Components</CDBSidebarMenuItem>
+            <CDBSidebarMenuItem icon="th-large">
+              <Link to="/technical-specifications">Technical Specifications</Link>
+            </CDBSidebarMenuItem>
+            <CDBSidebarMenuItem icon="sticky-note">Data Manipulation</CDBSidebarMenuItem>
 
             <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="sticky-note">Components</CDBSidebarMenuItem>
