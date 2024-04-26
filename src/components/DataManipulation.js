@@ -1,12 +1,12 @@
 import React from 'react';
 import jsYaml from 'js-yaml';
 import * as XLSX from 'xlsx';
-import  Header from './Header';
-import SideNav from './SideNav';
- import Footer from './Footer';
+import  Header from '../Header';
+import SideNav from '../SideNav';
+import Footer from '../Footer';
 import './Styles.css';
 
-class YamlConverter extends React.Component {
+class DataManipulation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,10 +72,8 @@ class YamlConverter extends React.Component {
 
     return (
       <div>
-  <Header />
   
   <div style={{ display: 'flex' }}>
-      <SideNav />
       <div className="mainbody" style={{ flex: '1' }}>
   <div style={{ display: 'flex', flexDirection: 'column' }}>
     <div className="container">
@@ -110,7 +108,6 @@ class YamlConverter extends React.Component {
 
 
     </div>
-    <Footer />
   </div>
 );
 
@@ -118,7 +115,7 @@ class YamlConverter extends React.Component {
   }
 }
 
-export default YamlConverter;
+export default DataManipulation;
 
 // Function to flatten nested YAML object
 function flattenObject(obj, prefix = '') {

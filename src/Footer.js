@@ -12,15 +12,6 @@ import {
 const Footer = () => {
     return (
         <Box>
-            <h1
-                style={{
-                    color: "grey",
-                    textAlign: "center",
-                    marginTop: "10px",
-                }}
-            >
-                Coforge
-            </h1>
             <FooterContainer>
                 <Row>
                     <Column>

@@ -15,14 +15,9 @@ class TechnicalSpecifications extends React.Component {
 
 
   render() {
-     const {    } = this.state;
 
     return (
       <div>
-        <div>
-            <h1>Technical Specifications</h1>
-            {/* Add content here */}
-        </div>
   
   <div style={{ display: 'flex' }}>
       <div className="mainbody" style={{ flex: '1' }}>
@@ -47,12 +42,6 @@ class TechnicalSpecifications extends React.Component {
       <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
         <button className="btn btn-primary" onClick={this.convertToExcel}>Convert to Excel</button>
       </div>
-      {excelData && (
-        <div className="mb-3" style={{ margin: '0 auto', width: 'fit-content' }}>
-          {/* <h3>Download Excel</h3> */}
-          <a href={excelData} download="data.xlsx" className="btn btn-success">Download Excel</a>
-        </div>
-      )}
     </div>
   </div>
 </div>

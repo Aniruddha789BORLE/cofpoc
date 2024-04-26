@@ -18,7 +18,9 @@ const SideBar = () => {
             <CDBSidebarMenuItem icon="th-large">
               <Link to="/technical-specifications">Technical Specifications</Link>
             </CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="sticky-note">Data Manipulation</CDBSidebarMenuItem>
+            <CDBSidebarMenuItem icon="sticky-note">
+            <Link to="/data-manipulation">Data Manipulation</Link>
+            </CDBSidebarMenuItem>
 
             <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="sticky-note">Components</CDBSidebarMenuItem>

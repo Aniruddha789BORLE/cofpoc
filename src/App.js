@@ -1,32 +1,32 @@
-// import logo from './logo.svg';
-// import { Router, Route, Switch } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes
 import './App.css';
-// import YamlConverter from './YamlConverter';
-// import { Switch } from 'react-router-dom';
-
 import Header from './Header';
 import SideBar from './SideNav';
 import Footer from './Footer';
-// import Home from './components/Home';
+import Home from './components/Home';
 import TechnicalSpecifications from './components/TechnicalSpecifications';
-
-// import NotFound from './components/NotFound';
+import NotFound from './components/NotFound';
+import DataManipulation from './components/DataManipulation';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <SideBar />
-
       <Router>
-            <Switch>
-                {/* <Route exact path="/" component={Home} /> */}
-                <Route path="/technical-specifications" component={TechnicalSpecifications} />
-            </Switch>
-        </Router>
-
+        <Header />
+        <div className="main-container">
+          <SideBar />
+          <div className="content-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/technical-specifications" element={<TechnicalSpecifications />} />
+              <Route path="/data-manipulation" element={<DataManipulation />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </div>
         <Footer />
+      </Router>
     </div>
   );
 }
