@@ -8,6 +8,8 @@ import Home from './components/Home';
 import TechnicalSpecifications from './components/TechnicalSpecifications';
 import NotFound from './components/NotFound';
 import DataManipulation from './components/DataManipulation';
+import Test from './components/Test';
+import TestCaseGeneration2 from './components/TestCaseGeneration2';
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/technical-specifications" element={<TechnicalSpecifications />} />
               <Route path="/data-manipulation" element={<DataManipulation />} />
+           
+              <Route path="/testcasegeneration2" element={<TestCaseGeneration2/>} />
+              <Route path="/test" element={<Test/>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

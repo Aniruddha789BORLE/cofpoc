@@ -21,6 +21,12 @@ const SideBar = () => {
             <CDBSidebarMenuItem icon="sticky-note">
             <Link to="/data-manipulation">Data Manipulation</Link>
             </CDBSidebarMenuItem>
+            <CDBSidebarMenuItem icon="sticky-note">
+            <Link to="/test">Test</Link>
+            </CDBSidebarMenuItem>
+            <CDBSidebarMenuItem icon="sticky-note">
+            <Link to="/testcasegeneration2">TestCaseGeneration</Link>
+            </CDBSidebarMenuItem>
 
             <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
             <CDBSidebarMenuItem icon="sticky-note">Components</CDBSidebarMenuItem>
