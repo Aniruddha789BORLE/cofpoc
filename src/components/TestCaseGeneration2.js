@@ -94,8 +94,60 @@
 
 // export default TestCaseGeneration2;
 
+// 
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
+import './Styles.css'; // Import CSS file for styling
+
+const DownloadTemplateButton = () => {
+  const handleDownloadTemplate = () => {
+    // Create dummy data for the Excel template
+    // const dummyData = [
+    //   { Name: 'John', Age: 30, City: 'New York' },
+    //   { Name: 'Alice', Age: 25, City: 'Los Angeles' },
+    //   { Name: 'Bob', Age: 35, City: 'Chicago' },
+    // ];
+    const dummyData = [
+        ['TC_ID', 'Test Case Description', 'Test Steps', 'Expected Result', 'Expected Status Code'],
+        ['1', 'Sample test case', 'Step 1', 'Expected result 1', '200'],
+        // Add more rows as needed
+      ];
+
+    // Create a new workbook
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.json_to_sheet(dummyData);
+
+    // Add the worksheet to the workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    // Write the workbook to a buffer
+    const excelBuffer = XLSX.write(workbook, { type: 'array', bookType: 'xlsx' });
+
+    // Convert the buffer to a Blob
+    const excelBlob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+
+    // Create a URL for the Blob
+    const excelUrl = URL.createObjectURL(excelBlob);
+
+    // Trigger a download of the Excel file
+    const link = document.createElement('a');
+    link.href = excelUrl;
+    link.download = 'template.xlsx'; // Set the filename for the template
+    document.body.appendChild(link);
+    link.click();
+
+    // Clean up
+    URL.revokeObjectURL(excelUrl);
+    document.body.removeChild(link);
+  };
+
+  return (
+    <div>
+      <p>Download the template file:</p>
+      <button className="blue-button" onClick={handleDownloadTemplate}>Download Template</button>
+    </div>
+  );
+};
 
 const ExcelConcatenator = () => {
   const [excelData, setExcelData] = useState([]);
@@ -137,40 +189,58 @@ const ExcelConcatenator = () => {
   };
 
   const handleConcatenate = () => {
+    // Add "Hi" to each cell of existing excelData
+    const dataWithHi = excelData.map(row => {
+      const newRow = {};
+      Object.keys(row).forEach(key => {
+        newRow[key] = 'Hi ' + row[key]; // Concatenate "Hi" with each existing value
+      });
+      return newRow;
+    });
+  
     // Create a new workbook
     const workbook = XLSX.utils.book_new();
-    const worksheet = XLSX.utils.json_to_sheet(excelData);
-
+    const worksheet = XLSX.utils.json_to_sheet(dataWithHi);
+  
     // Add the worksheet to the workbook
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'ConcatenatedData');
-
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'TestCases');
+  
     // Write the workbook to a buffer
     const excelBuffer = XLSX.write(workbook, { type: 'array', bookType: 'xlsx' });
-
+  
     // Convert the buffer to a Blob
     const excelBlob = new Blob([excelBuffer], { type: 'application/octet-stream' });
-
+  
     // Create a URL for the Blob
     const excelUrl = URL.createObjectURL(excelBlob);
-
+  
     // Trigger a download of the Excel file
     const link = document.createElement('a');
     link.href = excelUrl;
     link.download = 'TestCases.xlsx';
     document.body.appendChild(link);
     link.click();
-
+  
     // Clean up
     URL.revokeObjectURL(excelUrl);
     document.body.removeChild(link);
   };
-
-  return (
-    <div>
-      <input type="file" onChange={handleFileUpload} multiple accept=".xlsx, .xls" />
-      <button onClick={handleConcatenate}>Generate Test Cases and Download</button>
+  
+  return ( 
+   <div className="container">
+      <div>
+        <DownloadTemplateButton />
+      </div>
+      <div>
+        <p>Upload Excel file(s) to concatenate:</p>
+        <input type="file" onChange={handleFileUpload} multiple accept=".xlsx, .xls" />
+      </div>
+      <div>
+        <p>Generate Test Cases and Download:</p>
+        <button className="blue-button" onClick={handleConcatenate}>Generate Test Cases and Download</button>
+      </div>
     </div>
   );
 };
 
-export default ExcelConcatenator;
+export default ExcelConcatenator
